@@ -19,3 +19,4 @@ product = int(gamma_rate, 2) * int(epsilon_rate, 2)
 print(product)
 
 # Part II
+# me no understand, sory for my bed england
