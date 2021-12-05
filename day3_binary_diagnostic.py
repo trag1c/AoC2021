@@ -16,7 +16,30 @@ epsilon_rate = "".join("01"[i == "0"] for i in gamma_rate)
 
 product = int(gamma_rate, 2) * int(epsilon_rate, 2)
 
-print(product)
+print(f"Gamma rate: {gamma_rate} ({int(gamma_rate, 2)})")
+print(f"Epsilon rate: {epsilon_rate} ({int(epsilon_rate, 2)})")
+print(f"Product: {product}")
 
 # Part II
-# me no understand, sory for my bed england
+to_delete = []
+for i in range(12):
+    nd = {v: k for k, v in arr[i].items()}
+    mostpop = nd[max(nd.keys())]
+    for line in data:
+        if line[i] != mostpop:
+            to_delete.append(line)
+
+o2 = [i for i in data if i not in to_delete][0].strip()
+
+to_delete = []
+for i in range(12):
+    nd = {v: k for k, v in arr[i].items()}
+    leastpop = nd[min(nd.keys())]
+    for line in data:
+        if line[i] != leastpop:
+            to_delete.append(line)
+
+co2 = [i for i in data if i not in to_delete]
+
+print(f"O2: {o2} ({int(o2, 2)})")
+print(f"CO2: {co2}")#" ({int(co2, 2)})")
