@@ -25,26 +25,43 @@ class Bingo:
             for j, number in enumerate(row):
                 if self.picked[i][j] == 0:
                     score += number
-        return score * picks[0]
+        return score * first
 
 # Data parsing
 picks = [*map(int, data[0].split(","))]
 
 boards = []
 newboard = []
-for line in data[1:]:
+for line in data[2:]:
     if line == "\n":
         boards.append(newboard)
         newboard = []
     else:
         newboard.append(line.strip())
 
+# Part I
 boards = [Bingo(board) for board in boards]
-
-while picks:
+p1_picks = picks[:]
+while p1_picks:
+    first = p1_picks.pop(0)
     for board in boards:
-        board.put(picks[0])
+        board.put(first)
         if board.is_bingo:
             print(board.score)
-            exit()
-    picks.pop(0)
+            p1_picks = []
+            break
+
+# Part II
+p2_picks = picks[:]
+to_delete = []
+while p2_picks:
+    first = p2_picks.pop(0)
+    for board in boards:
+        board.put(first)
+        if board.is_bingo:
+            to_delete.append(board)
+    for i in to_delete:
+        boards.remove(i)
+    to_delete = []
+
+print(board.score)
