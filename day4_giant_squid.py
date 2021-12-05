@@ -54,7 +54,7 @@ while p1_picks:
 # Part II
 p2_picks = picks[:]
 to_delete = []
-while p2_picks:
+while p2_picks and boards:
     first = p2_picks.pop(0)
     for board in boards:
         board.put(first)
